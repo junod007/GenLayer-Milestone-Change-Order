@@ -6,82 +6,77 @@ A GenLayer intelligent contract for managing milestone requirement changes throu
 
 **GenLayer Milestone Change Order** is an intelligent contract designed to manage changes to milestone requirements in a structured and transparent way.
 
-The contract allows a client to propose a change to an existing requirement. The provider can then review the proposal and approve or reject it.
+The contract allows clients and providers to propose changes to existing requirements while ensuring that both parties must approve the proposed changes before they are applied.
 
-The contract tracks the proposal status, approval states, requirement revisions, and the parties involved.
+It helps maintain a clear revision history and provides a structured workflow for handling milestone requirement changes.
 
 ## Key Features
 
-* **Change Proposals** — Clients can propose updates to milestone requirements with a reason.
-* **Dual-Party Approval** — Tracks client and provider approval independently.
-* **Approval Workflow** — Supports approving or rejecting proposed changes.
-* **Revision Tracking** — Maintains a revision number for requirement changes.
-* **On-Chain State** — Stores proposal details, approval status, and change history state.
+* **Change Proposals** — Clients and providers can propose updates to milestone requirements.
+* **Mutual Approval** — Both parties must approve a proposal before it becomes effective.
+* **Change Rejection** — Either party can reject an active proposal.
+* **Revision Tracking** — The contract tracks requirement revisions.
+* **Access Control** — Only the client and provider can propose, approve, or reject changes.
+* **Contract State** — Retrieve the current requirement, proposal details, approval status, and revision.
 
 ## Workflow
 
-1. The client proposes a new milestone requirement and provides a reason.
-2. The proposal becomes active and awaits approval.
-3. The client and provider can approve the proposed change.
-4. The provider can reject a proposal.
-5. The contract updates its state to reflect the outcome.
+1. Initialize the contract with a provider address and the initial milestone requirement.
+2. The client or provider proposes a requirement change with a reason.
+3. The proposer is automatically recorded as having approved the proposal.
+4. The other party reviews and approves or rejects the proposal.
+5. Once both parties approve, the new requirement is applied and the revision number increases.
 
-## Contract State
-
-The contract tracks:
-
-| Field                  | Description                   |
-| ---------------------- | ----------------------------- |
-| `client`               | Client address                |
-| `provider`             | Provider address              |
-| `requirement`          | Current milestone requirement |
-| `proposed_requirement` | Proposed new requirement      |
-| `proposal_active`      | Whether a proposal is active  |
-| `client_approved`      | Client approval status        |
-| `provider_approved`    | Provider approval status      |
-| `revision`             | Requirement revision number   |
-| `last_change_status`   | Status of the latest change   |
+If a proposal is rejected, it is cancelled without changing the current requirement.
 
 ## Contract Methods
 
-| Method                 | Description                      |
-| ---------------------- | -------------------------------- |
-| `get_contract_state()` | Reads the current contract state |
-| `propose_change()`     | Proposes a requirement change    |
-| `approve_change()`     | Approves a proposed change       |
-| `reject_change()`      | Rejects a proposed change        |
+| Method                 | Description                         |
+| ---------------------- | ----------------------------------- |
+| `propose_change()`     | Propose a new milestone requirement |
+| `approve_change()`     | Approve an active proposal          |
+| `reject_change()`      | Reject an active proposal           |
+| `get_contract_state()` | Retrieve the current contract state |
+
+## State Management
+
+The contract tracks:
+
+* Client and provider addresses
+* Current milestone requirement
+* Proposed requirement and reason
+* Proposal status
+* Client and provider approval status
+* Current revision number
+* Last change status
 
 ## Testing
 
-The contract was deployed and tested using GenLayer Studio.
+The contract was tested in GenLayer Studio using its transaction interface.
 
 Test scenarios included:
 
-* Proposing a milestone requirement change.
-* Approving a proposed change.
-* Rejecting a proposed change.
-* Checking the resulting contract state.
-* Verifying proposal status and revision updates.
+* Proposing a milestone requirement change
+* Rejecting a proposed change
+* Approving a change through both parties
+* Applying an approved change
+* Checking the updated contract state and revision
 
-Transactions were executed through GenLayer Studio's Run and Debug interface.
+The successful approval flow updated the requirement to `Deliver 20 units instead of 5` and advanced the revision to `3`.
 
 ## Technology
 
 * GenLayer
+* GenLayer Intelligent Contracts
 * Python
 * GenLayer Studio
-* Intelligent Contracts
 
-## Project Purpose
+## Project Status
 
-This project explores how intelligent contracts can support milestone-based workflows by making requirement changes traceable and requiring participation from both parties.
+**Implemented and tested in GenLayer Studio.**
 
-It is part of my ongoing journey of learning and building on GenLayer.
+This project is part of my ongoing journey exploring intelligent contracts and decentralized applications with GenLayer.
 
-## Disclaimer
+---
 
-This project is an experimental testnet implementation and is not intended for production use.
-
-## Author
-
-Built by [@junod07](https://github.com/junod07) as part of my GenLayer builder journey.
+Built as part of my GenLayer developer journey.
