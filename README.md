@@ -80,3 +80,27 @@ This project is part of my ongoing journey exploring intelligent contracts and d
 ---
 
 Built as part of my GenLayer developer journey.
+
+## 📸 Demo & Execution Evidence
+
+Screenshots demonstrating the contract deployment,
+milestone change proposal, rejection, and approval flows.
+
+### 1. Contract Deployment
+![Contract Deployed](screenshots/Contract%20deployed%202026-09-18%20201158.png)
+
+### 2. Proposal Change
+![Pending Approval](screenshots/Proposal%20change%20Pending%20approval%202026-09-18%20201851.png)
+
+
+### 3. Rejection Flow
+
+The client can reject a proposed milestone change. The contract records the rejection and preserves the original milestone requirement.
+
+![Rejection Flow](screenshots/Rejection%20flow%20%E2%80%94%20REJECTED%20Screenshot%202026-09-18%20202404.png)
+
+### 4. Approval Flow
+
+When the client approves a proposed change, the contract applies the updated milestone requirement and records the approval status.
+
+![Approval Flow](screenshots/Approval%20flow%20%E2%80%94%20APPROVED_AND_APPLIED%20Screenshot%202026-09-18%20202550.png)
